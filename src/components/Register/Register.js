@@ -17,7 +17,7 @@ const Register = ({onRouteChange, loadUser}) => {
   }
 
   const onSumbit = () => {
-    fetch('http://localhost:4000/register', {
+    fetch(' https://still-spire-52947.herokuapp.com/register', {
       method : 'post',
       headers : {'Content-Type': 'application/json'},
       body:JSON.stringify({

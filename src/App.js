@@ -105,7 +105,7 @@ const onPictureSumbit = () => {
       .predict(
         Clarifai.FACE_DETECT_MODEL,
         input)*/
-       fetch('http://localhost:4000/imageurl', {
+       fetch('https://still-spire-52947.herokuapp.com/imageurl', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
              body:JSON.stringify({input: input})
@@ -114,7 +114,7 @@ const onPictureSumbit = () => {
      .then(response => 
      {
         if (response) {
-          fetch('http://localhost:4000/image', {
+          fetch(' https://still-spire-52947.herokuapp.com/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
              body:JSON.stringify({id: user.id})

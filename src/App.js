@@ -8,11 +8,6 @@ import Rank from './components/Rank/Rank'
 import SignIn from './components/SignIn/SignIn'
 import Register from './components/Register/Register'
 import Particles from 'react-particles-js';
-/*import Clarifai from 'clarifai';*/
-
-/*const app = new Clarifai.App({
- apiKey: 'a3e6e4443413464b85e4a928b9e7f4d8'
-});*/
 
 const particlesOptions = {
   particles: {
@@ -40,13 +35,6 @@ const [boxall, setBoxall] = useState([]);
 const [route, setRoute] = useState('SignIn');
 const [isSignedIN, setIsSignedIn] = useState(false);
 const [user, setUser] = useState({id: '', name: '',  email: '',  entries: 0,  joined: ''});
-//const [boxes, setBoxes] = useState([]);
-
-/*useEffect(() => {
-  fetch('http://localhost:4000')
-  .then(resonse => resonse.json())
-  .then(console.log)
-})*/
 
 const loadUser = (user) => {
   setUser(
@@ -66,9 +54,7 @@ const resetUser = () =>{
 }
 
   const calculateFaceLocation = (data) => {
-  //  console.log(data.outputs[0].data.regions);
     const clarifaiFaceAll = data.outputs[0].data.regions;
-    /*const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;*/
     const image = document.getElementById('inputimage');
     const width = Number(image.width);
     const height = Number(image.height);
@@ -83,12 +69,7 @@ const resetUser = () =>{
       )
     });
     return boxArr;
-   /* return {
-      leftCol: clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - (clarifaiFace.right_col * width),
-      bottomRow: height - (clarifaiFace.bottom_row * height)
-    }*/
+
   }
 
   const displayFaceBox = (box) => {
@@ -100,11 +81,8 @@ setInput(event.target.value);
 }
 
 const onPictureSumbit = () => {
-	setImageUrl(input);
-/*	app.models
-      .predict(
-        Clarifai.FACE_DETECT_MODEL,
-        input)*/
+  setImageUrl(input);
+
        fetch('https://still-spire-52947.herokuapp.com/imageurl', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -128,7 +106,7 @@ const onPictureSumbit = () => {
         joined : user.joined
       }))
         .catch(console.log)
-          /*(Object.assign(user, {entries: count}))*/
+
         }
        setBoxall(calculateFaceLocation(response));
       })
@@ -136,19 +114,6 @@ const onPictureSumbit = () => {
   }
 
 
-/*      .then(response => {
-        if(response){
-          console.log(user.id);
-          fetch('http://localhost:4000/image', {
-            method : 'put',
-            headers : {'Content-Type': 'application/json'},
-            body:JSON.stringify( user.id)
-          })
-        })
-        setBox(calculateFaceLocation(response))}
-      .catch(err => console.log(err))
-
-}*/
 
 const onRouteChange = (route) => {
   if (route === 'SignOut')
@@ -174,7 +139,7 @@ const onRouteChange = (route) => {
      <Navigation  onRouteChange={onRouteChange} isSignedIN={isSignedIN} />
 
 {route === 'home'
-?	
+? 
 <div>
      <Logo/>
      <Rank name={user.name} entries = {user.entries}/>

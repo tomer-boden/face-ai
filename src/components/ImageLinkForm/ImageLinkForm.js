@@ -5,7 +5,6 @@ const ImageLinkForm = ({onInputChange, onPictureSumbit}) => {
 	return (
 		<div>
 		<p className='f3'>
-		{'this magic is cool'}
 		</p>
 		<div className='center'>
 		<div className='form pa4 br3 shadow-5 center'>

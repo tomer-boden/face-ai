@@ -11,29 +11,10 @@ const ImageLinkForm = ({ onInputChange, onPictureSumbit }) => {
   const inputRef = useRef(null);
 
   // the configuration information is fetched from the .env file
-  const config = {
-    bucketName: "choosepiecedemo1",
-    region: "eu-west-2",
-    accessKeyId: "AKIAWCXN2RX3DSYSY4VD",
-    secretAccessKey: "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",
-  };
+
   const handleClick = () => {
     // 👇️ open file input box on click of other element
     inputRef.current.click();
-  };
-
-  const uploadFile = async (file) => {
-    const ReactS3Client = new S3(config);
-    // the name of the file uploaded is used to upload it to S3
-
-    console.log("loading");
-    await ReactS3Client.uploadFile(file, file.name)
-      .then((data) => console.log(data.location), setStatus("loading"))
-      .catch((err) => console.error(err));
-
-    await setStatus("avail");
-    await console.log("avail");
-    await setFile(null);
   };
 
   const uploadFileThroughMedaitor = async (file) => {

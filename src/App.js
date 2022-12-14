@@ -150,7 +150,7 @@ function App() {
 
       <Navigation onRouteChange={onRouteChange} isSignedIN={isSignedIN} />
 
-      {route === "home" ? (
+      {true ? (
         <div>
           <Logo />
           <Rank name={user.name} entries={user.entries} />
